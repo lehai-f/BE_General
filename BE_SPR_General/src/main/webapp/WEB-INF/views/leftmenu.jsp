@@ -83,7 +83,7 @@
 			<a href="${pageContext.request.contextPath}/Services/newSuDungMay"
 				class="list-group-item list-group-item-action bg-dark text-white">
 				<span class="menu-collapsed">Đăng ký SD Máy</span>
-			</a> <a href="${pageContext.request.contextPath}/Services/regUseService"
+			</a> <a href="${pageContext.request.contextPath}/Services/newSDDV"
 				class="list-group-item list-group-item-action bg-dark text-white">
 				<span class="menu-collapsed">Đăng ký SD DV</span>
 			</a> <a href="${pageContext.request.contextPath}/Services/listFullInfo"

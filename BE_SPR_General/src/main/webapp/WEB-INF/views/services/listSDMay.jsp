@@ -57,7 +57,6 @@
 								<th class="col">NgaySD</th>
 								<th class="col">Gio SD</th>
 								<th class="col">TGSD</th>
-								<th class="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -68,12 +67,6 @@
 									<td class="tt${cp.maMay} col">${cp.ngaySD}</td>
 									<td class="tt${cp.maMay} col">${cp.gioSD}</td>
 									<td class="tt${cp.maMay} col">${cp.thoiGianSD}</td>
-									<td class="col-1"><a href="update/${cp.maMay}"><i
-											class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
-										<a href="javascript:void(0);"
-										onclick="showConfirmation('${cp.maMay}')"
-										data-bs-toggle="modal" data-bs-target="#confirmModal"><i
-											class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -2,7 +2,6 @@ package be.general.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Embeddable;
 
@@ -25,6 +24,6 @@ public class SuDungDichVuID implements Serializable{
 
     private LocalDate ngaySD;
     
-    private LocalTime gioSD;
+    private String gioSD;
     
 }

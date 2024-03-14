@@ -1,5 +1,7 @@
 package be.general.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,5 +33,9 @@ public DichVu getDVByID(String maDV) {
 
 public Page<DichVu> seachList(String text, Pageable pageAble) {
     return dvRepo.searchDV(text, pageAble);
+}
+
+public List<String> allMaDV(){
+	return dvRepo.findAllMaDV();
 }
 }

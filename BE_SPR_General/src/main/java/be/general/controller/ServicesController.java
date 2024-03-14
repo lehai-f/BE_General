@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import be.general.dto.SuDungDVFormDTO;
 import be.general.dto.SuDungMayFormDTO;
+import be.general.services.DichVuServices;
 import be.general.services.KhachHangServices;
 import be.general.services.MayServices;
 import be.general.services.SVServices;
@@ -23,44 +25,80 @@ import be.general.services.SVServices;
 @Controller
 @RequestMapping("Services")
 public class ServicesController {
-    
-    @Autowired
-    private SVServices sv;
-    
-    @Autowired
-    private KhachHangServices khServices;
-    
-    @Autowired
-    private MayServices mayServices;
-    
-    @GetMapping("/newSuDungMay")
-    public String showFormSDMay(Model model) {
-        if(!model.containsAttribute("newSDMay")) {
-            model.addAttribute("listKH", khServices.getAllKH());
-            model.addAttribute("listMay", mayServices.getAllMay());
-            model.addAttribute("dkSDMayForm", new SuDungMayFormDTO());
-        }
-        return "/services/dkSDMay";
-    }
-    
-    @PostMapping("/saveSDMay")
-    public String saveNewSDMay(@ModelAttribute("dkSDMayForm") @Valid SuDungMayFormDTO sdMay, BindingResult rs,Model model) {
-        if(rs.hasErrors()) {
-            model.addAttribute("listKH", khServices.getAllKH());
-            model.addAttribute("listMay", mayServices.getAllMay());
-            return "/services/dkSDMay";
-        }
-        sv.saveNewSDMay(sdMay);
-        return "redirect:/Services/listSDMay";
-    }
-    
-    @GetMapping("/listSDMay")
-    public String listSDMay(Model model,@RequestParam(defaultValue = "0") Integer page) {
-        Pageable pageAble = PageRequest.of(page, 5);
-        Page<SuDungMayFormDTO> listSD = sv.getAllSuDungMayDTO(pageAble);
-        model.addAttribute("listSD", listSD.getContent());
-        model.addAttribute("ttPage", listSD.getTotalPages());
-        model.addAttribute("crPage",page);
-        return "/services/listSDMay";
-    }
+
+	@Autowired
+	private SVServices sv;
+
+	@Autowired
+	private KhachHangServices khServices;
+
+	@Autowired
+	private MayServices mayServices;
+
+	@Autowired
+	private DichVuServices dvServices;
+
+	@GetMapping("/newSuDungMay")
+	public String showFormSDMay(Model model) {
+		if (!model.containsAttribute("newSDMay")) {
+			model.addAttribute("listKH", khServices.getAllKH());
+			model.addAttribute("listMay", mayServices.getAllMay());
+			model.addAttribute("dkSDMayForm", new SuDungMayFormDTO());
+		}
+		return "/services/dkSDMay";
+	}
+
+	@PostMapping("/saveSDMay")
+	public String saveNewSDMay(@ModelAttribute("dkSDMayForm") @Valid SuDungMayFormDTO sdMay, BindingResult rs,
+			Model model) {
+		if (rs.hasErrors()) {
+			model.addAttribute("listKH", khServices.getAllKH());
+			model.addAttribute("listMay", mayServices.getAllMay());
+			return "/services/dkSDMay";
+		}
+		sv.saveNewSDMay(sdMay);
+		return "redirect:/Services/listSDMay";
+	}
+
+	@GetMapping("/listSDMay")
+	public String listSDMay(Model model, @RequestParam(defaultValue = "0") Integer page) {
+		Pageable pageAble = PageRequest.of(page, 5);
+		Page<SuDungMayFormDTO> listSD = sv.getAllSuDungMayDTO(pageAble);
+		model.addAttribute("listSD", listSD.getContent());
+		model.addAttribute("ttPage", listSD.getTotalPages());
+		model.addAttribute("crPage", page);
+		return "/services/listSDMay";
+	}
+
+	@GetMapping("/newSDDV")
+	public String showFormSDDV(Model model) {
+		if (!model.containsAttribute("newSDDV")) {
+			model.addAttribute("listKH", khServices.getAllKH());
+			model.addAttribute("listDV", dvServices.allMaDV());
+			model.addAttribute("dkSDDVForm", new SuDungDVFormDTO());
+		}
+
+		return "/services/dkSDDV";
+	}
+	
+	@PostMapping("/saveSDDV")
+	public String saveNewSDDV(@ModelAttribute("dkSDDVForm") @Valid SuDungDVFormDTO sddv, BindingResult rs, Model model) {
+		if(rs.hasErrors()) {
+			model.addAttribute("listKH", khServices.getAllKH());
+			model.addAttribute("listDV", dvServices.allMaDV());
+			return "/services/dkSDDV";
+		}
+		sv.saveNewSDDV(sddv);
+		return "redirect:/Services/listSDDV";
+	}
+	
+	@GetMapping("/listSDDV")
+	public String listSDDV(Model model, @RequestParam(defaultValue = "0") Integer page) {
+		Pageable pageAble = PageRequest.of(page, 5);
+		Page<SuDungDVFormDTO> listSDDV = sv.getAllSuDungDVDTO(pageAble);
+		model.addAttribute("listSD", listSDDV.getContent());
+		model.addAttribute("ttPage", listSDDV.getTotalPages());
+		model.addAttribute("crPage", page);
+		return "/services/listSDDV";
+	}
 }
