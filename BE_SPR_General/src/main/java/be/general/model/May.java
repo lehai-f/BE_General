@@ -28,6 +28,14 @@ public class May {
     
     private String trangThai;
     
-    @OneToMany(mappedBy = "sdmID.sdMay", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sdMay", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<SuDungMay> sdmList = new HashSet<SuDungMay>();
+
+    /**
+     * @param maMay
+     */
+    public May(String maMay) {
+        this.maMay = maMay;
+    }
+
 }

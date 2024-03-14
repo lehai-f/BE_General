@@ -32,9 +32,17 @@ public class KhachHang {
     
     private String email;
     
-    @OneToMany(mappedBy = "sddvID.sddvKH",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sddvKH",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<SuDungDichVu> sddvList = new HashSet<SuDungDichVu>();
     
-    @OneToMany(mappedBy = "sdmID.sdmKH",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sdmKH",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<SuDungMay> sdmList = new HashSet<SuDungMay>();
+
+    /**
+     * @param maKH
+     */
+    public KhachHang(String maKH) {
+        this.maKH = maKH;
+    }
+
 }

@@ -80,7 +80,7 @@
 		</a>
 		<!-- Inhalt des Untermenüs -->
 		<div id="submenu4" class="collapse sidebar-submenu" >
-			<a href="${pageContext.request.contextPath}/Services/regUseCP"
+			<a href="${pageContext.request.contextPath}/Services/newSuDungMay"
 				class="list-group-item list-group-item-action bg-dark text-white">
 				<span class="menu-collapsed">Đăng ký SD Máy</span>
 			</a> <a href="${pageContext.request.contextPath}/Services/regUseService"

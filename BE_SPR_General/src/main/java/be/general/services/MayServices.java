@@ -1,5 +1,7 @@
 package be.general.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,5 +28,15 @@ public class MayServices {
         // TODO Auto-generated method stub
         return mayRepo.findAll(pageAble);
     }
+
+    public May getMayByID(String maMay) {
+        // TODO Auto-generated method stub
+        return mayRepo.findById(maMay).get();
+    }
+
+    public List<May> getAllMay() {
+        return mayRepo.findAll();
+    }
+    
 
 }

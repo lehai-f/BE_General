@@ -2,11 +2,8 @@ package be.general.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,17 +17,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @Embeddable
 public class SuDungMayID implements Serializable{
+    private String maKH;
     
-    @ManyToOne()
-    @JoinColumn(name = "maMay")
-    private May sdMay;
-    
-    @ManyToOne()
-    @JoinColumn(name = "maKH")
-    private KhachHang sdmKH;
+    private String maMay;
     
     private LocalDate ngaySD;
     
-    private LocalTime gioSD;
+    private String gioSD;
+
+    @Override
+    public String toString() {
+        return "SuDungMayID [maKH=" + maKH + ", maMay=" + maMay + ", ngaySD=" + ngaySD + ", gioSD=" + gioSD + "]";
+    }
      
 }

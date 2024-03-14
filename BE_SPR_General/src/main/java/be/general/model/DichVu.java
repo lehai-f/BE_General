@@ -30,6 +30,15 @@ public class DichVu {
     
     private int donGia;
     
-    @OneToMany(mappedBy = "sddvID.sddvDV", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sddvDV", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<SuDungDichVu> sddvList = new HashSet<SuDungDichVu>();
+
+    /**
+     * @param maDV
+     */
+    public DichVu(String maDV) {
+        this.maDV = maDV;
+    }
+    
+    
 }

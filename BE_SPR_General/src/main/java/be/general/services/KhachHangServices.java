@@ -1,5 +1,7 @@
 package be.general.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,10 @@ public class KhachHangServices {
 
     public Page<KhachHang> searchList(String text, Pageable pageAble) {
         return khRepo.searchKH(text, pageAble);
+    }
+
+    public List<KhachHang> getAllKH() {
+        return khRepo.findAll();
     }
     
     

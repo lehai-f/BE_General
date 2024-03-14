@@ -5,8 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,14 +19,10 @@ import lombok.Setter;
 @Embeddable
 public class SuDungDichVuID implements Serializable{
     
-    @ManyToOne()
-    @JoinColumn(name = "maKH")
-    private KhachHang sddvKH;
+    private String maKH;
     
-    @ManyToOne()
-    @JoinColumn(name = "maDV")
-    private DichVu sddvDV;
-    
+    private String maDV;
+
     private LocalDate ngaySD;
     
     private LocalTime gioSD;
