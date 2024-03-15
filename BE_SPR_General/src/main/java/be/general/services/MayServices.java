@@ -38,5 +38,7 @@ public class MayServices {
         return mayRepo.findAll();
     }
     
-
+    public List<String> getAllMaMay(){
+        return mayRepo.findAllMaMay();
+    }
 }

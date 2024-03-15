@@ -80,4 +80,5 @@ public class KhachHangController {
         model.addAttribute("crPage",page);
         return "/khachhang/listkh";
     }
+    
 }

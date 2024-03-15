@@ -64,7 +64,7 @@
 						<tbody>
 							<c:forEach var="kh" items="${khList}" varStatus="status">
 								<tr>
-									<td class="col-1">${kh.maKH}</td>
+									<td class="col-1"><a href="${pageContext.request.contextPath}/Services/dkListSDMay/${kh.maKH}">${kh.maKH}</a></td>
 									<td class="col-2">${kh.tenKH}</td>
 									<td>${kh.diaChi}</td>
 									<td class="col-2">${kh.soDT}</td>

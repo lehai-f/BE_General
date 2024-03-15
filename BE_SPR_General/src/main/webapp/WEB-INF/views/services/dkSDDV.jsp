@@ -36,7 +36,7 @@
 			<div class="card shadow">
 				<h5 class="card-header font-weight-light">Requirements</h5>
 				<div class="card-body ">
-					<form:form action="saveSDMay"
+					<form:form action="saveSDDV"
 						class="d-flex row justify-content-center" method="POST"
 						modelAttribute="dkSDDVForm">
 						<div class="col-4">
@@ -55,8 +55,7 @@
 								<label for="" class="form-label">Mã DV</label>
 								<form:select path="maDV" class="form-select">
 									<form:option value="" disabled="true" selected="true">Chọn ID DV</form:option>
-									<form:options items="${listDV}" itemValue="maDV"
-										itemLabel="maDV" />
+									<form:options items="${listDV}"/>
 								</form:select>
 								<form:errors id="helpId" class="text-danger" path="maDV"></form:errors>
 							</div>
