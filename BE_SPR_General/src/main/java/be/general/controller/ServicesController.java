@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import be.general.dto.InfoFull;
 import be.general.dto.MayFormDTO;
 import be.general.dto.SDNhieuMayDTO;
 import be.general.dto.SuDungDVFormDTO;
@@ -118,7 +119,8 @@ public class ServicesController {
             model.addAttribute("listMM", mayServices.getAllMaMay());
             ArrayList<MayFormDTO> listMay = new ArrayList<MayFormDTO>();
             listMay.add(new MayFormDTO());
-            model.addAttribute("sudungMays", new SDNhieuMayDTO(idKH,listMay));
+            SDNhieuMayDTO abc = new SDNhieuMayDTO(idKH, listMay);
+            model.addAttribute("sudungMays", abc);
             model.addAttribute("idKH", idKH);
         }
         return "/services/dkNhieuMay";
@@ -127,7 +129,22 @@ public class ServicesController {
     @PostMapping("/saveNhieuMay")
     public String saveNhieuMay(@ModelAttribute("sudungMays") SDNhieuMayDTO sdm, BindingResult rs , Model model) {
         addValid.validate(sdm, rs);
-        
+        if(rs.hasErrors()) {
+        	model.addAttribute("idKH", sdm.getMaKH());
+        	model.addAttribute("listMM", mayServices.getAllMaMay());
+        	model.addAttribute("sudungMays", sdm);
+        	return "/services/dkNhieuMay";
+        }
         return "/index";
+    }
+    
+    @GetMapping("/listFullinfor")
+    public String getAllInfomation(Model model, @RequestParam(defaultValue = "0") Integer page) {
+    	Pageable pageAble = PageRequest.of(page, 5);
+    	Page<InfoFull> listFullIF = sv.getAllListInfo(pageAble);
+        model.addAttribute("khList", listFullIF.getContent());
+        model.addAttribute("ttPage", listFullIF.getTotalPages());
+        model.addAttribute("crPage", page);
+    	return "/services/FullInformation";
     }
 }

@@ -1,5 +1,7 @@
 package be.general.repositories;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +19,8 @@ public interface SDDVRepo extends JpaRepository<SuDungDichVu, SuDungDichVuID> {
 			+ " FROM SuDungDichVu sddv")
 	public Page<SuDungDVFormDTO> getAllSuDungDVDTO(Pageable pageAble);
 
+	@Query("SELECT new be.general.dto.SuDungDVFormDTO (sddv.sddvID.maKH, sddv.sddvID.maDV, sddv.sddvID.ngaySD, sddv.sddvID.gioSD, sddv.soLuong, dv.donGia) "
+			+ " FROM SuDungDichVu sddv "
+			+ " INNER JOIN sddv.sddvDV dv")
+	public List<SuDungDVFormDTO> getSDDVDTO();
 }

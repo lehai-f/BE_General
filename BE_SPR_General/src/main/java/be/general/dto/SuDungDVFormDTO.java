@@ -28,4 +28,18 @@ public class SuDungDVFormDTO {
 	private String gioSD;
 
 	private int soLuong;
+	
+	private int donGia;
+
+	public SuDungDVFormDTO(@NotEmpty String maKH, @NotEmpty String maDV, LocalDate ngaySD, @NotEmpty String gioSD,
+			int soLuong) {
+		super();
+		this.maKH = maKH;
+		this.maDV = maDV;
+		this.ngaySD = ngaySD;
+		this.gioSD = gioSD;
+		this.soLuong = soLuong;
+	}
+	
+	
 }

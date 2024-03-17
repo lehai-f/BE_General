@@ -44,7 +44,7 @@
 						modelAttribute="sudungMays">
 						<form:input type="hidden" name="khachHangId" value="${idKH}" path="maKH"/>
 						<div id="render">
-							<c:forEach items="sudungMays.listMay" var="listMay"
+							<c:forEach items="${sudungMays.listMay}" var="listMay"
 								varStatus="status">
 								<div class="sd-may row p-0">
 									<div class="col-3">
@@ -83,7 +83,7 @@
 									<div class="col-3">
 										<div class="mb-3">
 											<label for="" class="form-label">TG SD:</label>
-											<form:input type="text" id="thoiGianSD_${status.index}"
+											<form:input type="number" id="thoiGianSD_${status.index}"
 												class="form-control"
 												path="listMay[${status.index}].thoiGianSD" />
 											<form:errors id="helpId" class="text-danger"
@@ -102,21 +102,22 @@
 		<!-- Main Col END -->
 	</div>
 	<!-- body-row END -->
-	<script src="<c:url value="/resources/jQuery/jquery-3.7.0.min.js"/>"></script>
 	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/resources/jQuery/jquery-3.7.0.min.js"/>"></script>
 	<script src="<c:url value="/resources/js/menu1.js"/>"></script>
 	<script>
-	$(document).ready(function() {
+	 var jq = jQuery.noConflict();
+	 jq(document).ready(function() {
 	    // Hàm thêm đoạn mã HTML vào form
+	    var sida = jq('.sd-may').length;
 	    function addSDMay() {
-	        var index = $('.sd-may').length;
-
+	    	console.log(sida)
 	        var newSDMayHTML = `
 	            <div class="sd-may row p-0">
 	               <div class="col-3">
 	                   <div class="mb-3">
 	                       <label for="" class="form-label">Mã Máy</label>
-	                       <select name="listMay[${index}].maMay" class="form-select">
+	                       <select name="listMay[\${sida}].maMay" class="form-select">
 	                           <option value="" disabled="true" selected="true">Chọn ID May</option>
 	                           <c:forEach items="${listMM}" var="item">
 	                               <option value="${item}">${item}</option>
@@ -128,29 +129,30 @@
 	               <div class="col-3">
 	                   <div class="mb-3">
 	                       <label for="" class="form-label">Ngày SD:</label>
-	                       <input type="date" id="ngaySD_${index}" class="form-control" name="listMay[${index}].ngaySD" />
+	                       <input type="date" id="ngaySD_\${sida}" class="form-control" name="listMay[\${sida}].ngaySD" />
 	                   </div>
 	               </div>
 
 	               <div class="col-3">
 	                   <div class="mb-3">
 	                       <label for="" class="form-label">Giờ SD:</label>
-	                       <input type="time" id="gioSD_${index}" class="form-control" name="listMay[${index}].gioSD" />
+	                       <input type="time" id="gioSD_\${sida}" class="form-control" name="listMay[\${sida}].gioSD" />
 	                   </div>
 	               </div>
 
 	               <div class="col-3">
 	                   <div class="mb-3">
 	                       <label for="" class="form-label">TG SD:</label>
-	                       <input type="text" id="thoiGianSD_${index}" class="form-control" name="listMay[${index}].thoiGianSD" />
+	                       <input type="number" id="thoiGianSD_\${sida}" class="form-control" name="listMay[\${sida}].thoiGianSD" />
 	                   </div>
 	               </div>
 	           </div> `;
 
-	        $('#render').append(newSDMayHTML); // Thêm đoạn mã HTML vào container
+	           jq('#render').append(newSDMayHTML); // Thêm đoạn mã HTML vào container
+	        sida ++;
 	    }
 	    
-	    $('#addMay').click(function() {
+	    jq('#addMay').click(function() {
 	    	addSDMay();
 	    });
 	});

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import be.general.dto.InfoFull;
 import be.general.dto.SuDungDVFormDTO;
 import be.general.dto.SuDungMayFormDTO;
 import be.general.model.DichVu;
@@ -15,6 +16,7 @@ import be.general.model.SuDungDichVu;
 import be.general.model.SuDungDichVuID;
 import be.general.model.SuDungMay;
 import be.general.model.SuDungMayID;
+import be.general.repositories.KhachHangRepo;
 import be.general.repositories.SDDVRepo;
 import be.general.repositories.SDMRepo;
 
@@ -25,6 +27,9 @@ public class SVServices {
     
     @Autowired
     private SDMRepo sdmRepo;
+    
+    @Autowired
+    private KhachHangRepo khRepo;
     
     @Autowired
     private ModelMapper modelMap;
@@ -56,5 +61,9 @@ public class SVServices {
 	public Page<SuDungDVFormDTO> getAllSuDungDVDTO(Pageable pageAble) {
         return sddvRepo.getAllSuDungDVDTO(pageAble);
     }
+
+	public Page<InfoFull> getAllListInfo(Pageable pageAble) {
+		return khRepo.getAllInfo(pageAble);
+	}
     
 }

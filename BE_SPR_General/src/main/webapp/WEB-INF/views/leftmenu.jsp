@@ -86,16 +86,27 @@
 			</a> <a href="${pageContext.request.contextPath}/Services/newSDDV"
 				class="list-group-item list-group-item-action bg-dark text-white">
 				<span class="menu-collapsed">Đăng ký SD DV</span>
-			</a> <a href="${pageContext.request.contextPath}/Services/listFullInfo"
+			</a> <a href="${pageContext.request.contextPath}/Services/listFullinfor"
 				class="list-group-item list-group-item-action bg-dark text-white">
 				<span class="menu-collapsed">Liệt Kê Thông Tin</span>
 			</a>
-			</a> <a href="${pageContext.request.contextPath}/Services/listFullInfo1"
-				class="list-group-item list-group-item-action bg-dark text-white">
-				<span class="menu-collapsed">New Task</span>
-			</a>
 		</div>
 
+		<a href="#submenu5" data-bs-toggle="collapse" aria-expanded="false"
+			class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+			<div class="d-flex w-100 justyfy-content-start align-items-center">
+				<span class="fas fa-tasks fa-fw me-3"></span> <span
+					class="menu-collapsed">TEST</span> <span
+					class="fas fa-angle-down ms-auto"></span>
+			</div>
+		</a>
+		<!-- Inhalt des Untermenüs -->
+		<div id="submenu5" class="collapse sidebar-submenu" >
+			</a> <a href="${pageContext.request.contextPath}/newTN/listFullinfor"
+				class="list-group-item list-group-item-action bg-dark text-white">
+				<span class="menu-collapsed">TEST</span>
+			</a>
+		</div>
 
 		<!-- Separator with title -->
 		<li

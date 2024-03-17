@@ -18,5 +18,6 @@ public class MayFormDTO {
 
     private String gioSD;
     
-    private int thoiGianSD;
+    private Integer thoiGianSD;
+
 }

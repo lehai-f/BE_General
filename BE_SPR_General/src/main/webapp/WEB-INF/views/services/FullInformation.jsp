@@ -32,11 +32,11 @@
 		<!-- Seitenleiste-container END -->
 		<!-- MAIN -->
 		<div class="col p-4">
-			<h1 class="display-4">All Computer</h1>
+			<h1 class="display-4">All Customer</h1>
 			<div class="card shadow">
 				<h5 class="card-header font-weight-light">Requirements</h5>
 				<div class="card-body">
-					<form action="${pageContext.request.contextPath}/computer/search"
+					<form action="${pageContext.request.contextPath}/khachhang/search"
 						class="mb-3">
 						<div class="row m-0 justify-content-end">
 							<div class="col-3">
@@ -52,21 +52,35 @@
 						class="table table-hover table-dark table-striped text-center">
 						<thead>
 							<tr class="">
-							<th class="col">Mã KH</th>
+								<th class="col">Mã KH</th>
+								<th class="col">Tên KH</th>
+								<th class="col">Mã Máy</th>
+								<th class="col">Vị Trí</th>
+								<th class="col">Trạng Thái</th>
+								<th class="col">Ngày BĐ SDM</th>
+								<th class="col">TG SDM</th>
 								<th class="col">Mã DV</th>
-								<th class="col">NgaySD</th>
-								<th class="col">Gio SD</th>
-								<th class="col">So Luong</th>
+								<th class="col">Ngày SDDV</th>
+								<th class="col">Giờ SDDV</th>
+								<th class="col">SL</th>
+								<th class="col">Tổng Tiền</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="cp" items="${listSD}" varStatus="status">
+							<c:forEach var="info" items="${khList}" varStatus="status">
 								<tr>
-									<td class="${cp.maKH} col-1">${cp.maKH}</td>
-									<td class="vt${cp.maDV} col">${cp.maDV}</td>
-									<td class="tt${cp.maDV} col">${cp.ngaySD}</td>
-									<td class="tt${cp.maDV} col">${cp.gioSD}</td>
-									<td class="tt${cp.maDV} col">${cp.soLuong}</td>
+									<td class="col">${info.maKH}</td>
+	 								<td class="col">${info.tenKH}</td>
+									<td class="col">${info.maMay}</td>
+									<td class="col">${info.viTri}</td>
+									<td class="col">${info.trangThai}</td>
+									<td class="col">${info.ngayBatDauSDMay}</td>
+									<td class="col">${info.gioBatDauSDMay}</td>
+									<td class="col">${info.thoiGianSDMay}</td>
+									<td class="col">${info.maDV}</td>
+									<td class="col">${info.ngaySuDungDV}</td>
+									<td class="col">${info.soLuongSDDV}</td>
+									<td class="col">${info.tongTien}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -111,56 +125,11 @@
 		</div>
 		<!-- Main Col END -->
 	</div>
-	<!-- body-row END -->
-	<!-- Modal form confirm -->
-	<div class="modal fade" id="confirmModal" tabindex="-1"
-		aria-labelledby="confirmModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header py-2 px-3">
-					<h5 class="modal-title text-center" id="confirmModalLabel">Confirm
-						Delete</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body py-2 px-3">
-					<p class="m-0">Xác nhận xóa máy ?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary btn-sm"
-						data-bs-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-dark btn-sm"
-						onclick="confirmDel()">Confirm</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Optional: Place to the bottom of scripts -->
-	<script>
-		const myModal = new bootstrap.Modal(document.getElementById('modalId'),
-				options)
-	</script>
 
 	<script
 		src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
 	<script src="<c:url value="/resources/js/menu1.js" />"></script>
 	<script src="<c:url value="/resources/jQuery/jquery-3.7.0.min.js" />"></script>
-	<script>
-		function showConfirmation(id) {
-			$('#confirmModal').modal('show');
-			// Lưu ID vào biến toàn cục để sử dụng trong hàm confirmDelete()
-			window.deleteId = id;
-		}
-
-		function confirmDel() {
-			var id = window.deleteId;
-			if (id) {
-				window.location.href = "delete?id=" + id;
-			}
-			$('#confirmModal').modal('hide');
-		}
-	</script>
 </body>
 
 </html>

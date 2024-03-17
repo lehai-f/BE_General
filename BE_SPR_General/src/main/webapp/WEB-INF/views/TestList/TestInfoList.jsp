@@ -32,11 +32,11 @@
 		<!-- Seitenleiste-container END -->
 		<!-- MAIN -->
 		<div class="col p-4">
-			<h1 class="display-4">All Computer</h1>
+			<h1 class="display-4">All Customer</h1>
 			<div class="card shadow">
 				<h5 class="card-header font-weight-light">Requirements</h5>
 				<div class="card-body">
-					<form action="${pageContext.request.contextPath}/computer/search"
+					<form action="${pageContext.request.contextPath}/khachhang/search"
 						class="mb-3">
 						<div class="row m-0 justify-content-end">
 							<div class="col-3">
@@ -52,23 +52,52 @@
 						class="table table-hover table-dark table-striped text-center">
 						<thead>
 							<tr class="">
-							<th class="col">Mã KH</th>
-								<th class="col">Mã DV</th>
-								<th class="col">NgaySD</th>
-								<th class="col">Gio SD</th>
-								<th class="col">So Luong</th>
+								<th class="col-1">MãKH</th>
+								<th class="col-1">TênKH</th>
+								<th class="col-1">MãMáy</th>
+								<th class="col-1">ViTri</th>
+								<th class="col-1">TT</th>
+								<th class="col-1">NgàySDM</th>
+								<th class="col-1">TGSDM</th>
+								<th class="col-1">MãDV</th>
+								<th class="col-1">NgàySDDV</th>
+								<th class="col-1">GiờSDDV</th>
+								<th class="col-1">SL</th>
+								<th class="col-1">Tổng Tiền</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="cp" items="${listSD}" varStatus="status">
+							<c:forEach var="info" items="${khList}" varStatus="status">
 								<tr>
-									<td class="${cp.maKH} col-1">${cp.maKH}</td>
-									<td class="vt${cp.maDV} col">${cp.maDV}</td>
-									<td class="tt${cp.maDV} col">${cp.ngaySD}</td>
-									<td class="tt${cp.maDV} col">${cp.gioSD}</td>
-									<td class="tt${cp.maDV} col">${cp.soLuong}</td>
+									<td class="col text-start">${info.maKH}</td>
+									<td class="col text-start">${info.tenKH}</td>
+									<td class="col" colspan="5">
+										<div class="row m-0 p-0">
+											<c:forEach var="sdm" items="${info.sdmList}">
+												<!-- Render dữ liệu cho sử dụng máy -->
+												<div class ="text-start" style="width: 20%">${sdm.maMay}</div>
+												<div class ="text-start" style="width: 20%">${sdm.viTri}</div>
+												<div class ="text-start" style="width: 20%">${sdm.trangThai}</div>
+												<div class ="text-start" style="width: 20%">${sdm.ngaySD}</div>
+												<div style="width: 20%">${sdm.thoiGianSD}</div>
+											</c:forEach>
+										</div>
+									</td>
+									<td class="col" colspan="4">
+									<div class="row m-0 p-0 ">
+											<c:forEach var="sddv" items="${info.sddvList}">
+												<!-- Render dữ liệu cho sử dụng máy -->
+												<div class ="text-start" style="width: 25%">${sddv.maDV}</div>
+												<div class ="text-start" style="width: 25%">${sddv.ngaySD}</div>
+												<div class ="text-start"style="width: 25%">${sddv.gioSD}</div>
+												<div style="width: 25%">${sddv.soLuong}</div>
+											</c:forEach>
+										</div>
+									</td>
+									<td style="width: 20%">${info.tongTien}</td>
 								</tr>
 							</c:forEach>
+
 						</tbody>
 					</table>
 					<c:if test="${ttPage > 0}">
@@ -88,8 +117,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a
-												class="page-link bg-dark text-light"
-												href="list?page=${i}">${i+1}</a></li>
+												class="page-link bg-dark text-light" href="list?page=${i}">${i+1}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -111,56 +139,11 @@
 		</div>
 		<!-- Main Col END -->
 	</div>
-	<!-- body-row END -->
-	<!-- Modal form confirm -->
-	<div class="modal fade" id="confirmModal" tabindex="-1"
-		aria-labelledby="confirmModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header py-2 px-3">
-					<h5 class="modal-title text-center" id="confirmModalLabel">Confirm
-						Delete</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body py-2 px-3">
-					<p class="m-0">Xác nhận xóa máy ?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary btn-sm"
-						data-bs-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-dark btn-sm"
-						onclick="confirmDel()">Confirm</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Optional: Place to the bottom of scripts -->
-	<script>
-		const myModal = new bootstrap.Modal(document.getElementById('modalId'),
-				options)
-	</script>
 
 	<script
 		src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
 	<script src="<c:url value="/resources/js/menu1.js" />"></script>
 	<script src="<c:url value="/resources/jQuery/jquery-3.7.0.min.js" />"></script>
-	<script>
-		function showConfirmation(id) {
-			$('#confirmModal').modal('show');
-			// Lưu ID vào biến toàn cục để sử dụng trong hàm confirmDelete()
-			window.deleteId = id;
-		}
-
-		function confirmDel() {
-			var id = window.deleteId;
-			if (id) {
-				window.location.href = "delete?id=" + id;
-			}
-			$('#confirmModal').modal('hide');
-		}
-	</script>
 </body>
 
 </html>
