@@ -14,4 +14,10 @@ import lombok.Setter;
 public class SDNhieuMayDTO {
     private String maKH;
     ArrayList<MayFormDTO> listMay;
+    
+    @Override
+    public String toString() {
+        return "SDNhieuMayDTO [maKH=" + maKH + ", listMay=" + listMay + "]";
+    }
+      
 }

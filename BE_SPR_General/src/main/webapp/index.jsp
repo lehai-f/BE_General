@@ -46,6 +46,7 @@
 						</li>
 					</ul>
 				</div>
+			<input class="form-control form-control-sm" type="datetime-local"/>
 			</div>
 		</div>
 		<!-- Main Col END -->

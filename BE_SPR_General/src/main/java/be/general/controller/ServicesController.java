@@ -135,7 +135,8 @@ public class ServicesController {
         	model.addAttribute("sudungMays", sdm);
         	return "/services/dkNhieuMay";
         }
-        return "/index";
+        sv.saveListSDMay(sdm);
+        return "redirect:/newTN/listFullinfor";
     }
     
     @GetMapping("/listFullinfor")

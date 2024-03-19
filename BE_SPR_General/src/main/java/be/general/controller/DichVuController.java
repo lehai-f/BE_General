@@ -1,5 +1,7 @@
 package be.general.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,7 +33,7 @@ public class DichVuController {
     }
 
     @PostMapping("/save")
-    public String saveNewDV(Model model, @ModelAttribute("dvForm") @Validated DichVu dv, BindingResult rs) {
+    public String saveNewDV(Model model, @ModelAttribute("dvForm") @Valid DichVu dv, BindingResult rs) {
         if (rs.hasErrors()) {
             return "/dichvu/newdv";
         }

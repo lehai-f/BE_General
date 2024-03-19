@@ -1,5 +1,7 @@
 package be.general.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,7 +34,7 @@ public class MayController {
     }
     
     @PostMapping("/save")
-    public String saveMay(@ModelAttribute("formMay") @Validated May may, Model model, BindingResult rs) {
+    public String saveMay(@ModelAttribute("formMay") @Valid May may, Model model, BindingResult rs) {
         if(rs.hasErrors()) {
             return "/may/newMay";
         }

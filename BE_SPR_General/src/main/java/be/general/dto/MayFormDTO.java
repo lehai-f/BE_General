@@ -20,4 +20,10 @@ public class MayFormDTO {
     
     private Integer thoiGianSD;
 
+    @Override
+    public String toString() {
+        return "MayFormDTO [maMay=" + maMay + ", ngaySD=" + ngaySD + ", gioSD=" + gioSD + ", thoiGianSD=" + thoiGianSD
+                + "]";
+    }
+
 }

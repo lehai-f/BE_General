@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,10 +24,13 @@ import lombok.Setter;
 public class May {
     
     @Id
+    @Pattern(regexp = "^(M|m)[0-9]{3}$", message = "Mã may phải bắt đầu bằng M và 3 chử số")
     private String maMay;
     
+    @NotBlank
     private String viTri;
     
+    @NotBlank
     private String trangThai;
     
     @OneToMany(mappedBy = "sdMay", cascade = CascadeType.ALL,fetch = FetchType.LAZY)

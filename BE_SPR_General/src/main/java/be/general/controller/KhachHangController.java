@@ -1,5 +1,7 @@
 package be.general.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,7 +33,7 @@ public class KhachHangController {
     }
     
     @PostMapping("/save")
-    public String saveNewKhachHang(Model model, @ModelAttribute("khForm") KhachHang kh, BindingResult rs) {
+    public String saveNewKhachHang(Model model, @ModelAttribute("khForm") @Valid KhachHang kh, BindingResult rs) {
        if(rs.hasErrors()) {
            return "/khachhang/newkh";
        }
