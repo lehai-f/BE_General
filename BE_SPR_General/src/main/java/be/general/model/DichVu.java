@@ -8,8 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,11 +28,13 @@ public class DichVu {
     @Pattern(regexp = "^(DV|dv)[0-9]{3}$", message = "Mã KH phải bắt đầu bằng KH và 3 chử số")
     private String maDV;
     
+    @NotBlank
     private String tenDV;
     
+    @NotBlank
     private String donViTinh;
     
-    @Min(value = 0, message = "Giá trị phải lớn hơn hoặc bằng 0")
+    @PositiveOrZero
     private int donGia;
     
     @OneToMany(mappedBy = "sddvDV", cascade = CascadeType.ALL,fetch = FetchType.LAZY)

@@ -42,21 +42,21 @@
 						<div class="col-3">
 							<div class="mb-3">
 								<label for="" class="form-label">Mã Dich Vu</label>
-								<form:input type="text" class="form-control" path="maDV" required="true"/>
+								<form:input type="text" class="form-control" path="maDV" />
 								<form:errors  class="text-danger" path="maDV"></form:errors>
 							</div>
 						</div>
 						<div class="col-3">
 							<div class="mb-3">
 								<label for="" class="form-label">Ten Dich Vu</label>
-								<form:input type="text" class="form-control" path="tenDV" required="true"/>
+								<form:input type="text" class="form-control" path="tenDV" />
 								<form:errors class="text-danger" path="tenDV"></form:errors>
 							</div>
 						</div>
 						<div class="col-3">
 							<div class="mb-3">
 								<label for="" class="form-label">Đơn Vị Tính</label>
-								<form:input type="text" class="form-control" path="donViTinh" required="true" />
+								<form:input type="text" class="form-control" path="donViTinh"  />
 								<form:errors  class="text-danger" path="donViTinh"></form:errors>
 							</div>
 						</div>

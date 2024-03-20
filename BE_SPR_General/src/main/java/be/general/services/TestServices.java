@@ -2,6 +2,8 @@ package be.general.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import be.general.repositories.SDDVRepo;
 import be.general.repositories.SDMRepo;
 
 @Service
+@Transactional
 public class TestServices {
 	@Autowired
 	KhachHangRepo khRepo;

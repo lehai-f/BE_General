@@ -96,12 +96,12 @@ public class MVCConfig implements WebMvcConfigurer {
 		return properties;
 	}
 
-	@Bean
-	public HibernateTransactionManager getTransactionManager() {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-		transactionManager.setSessionFactory(sessionFactory().getObject());
-		return transactionManager;
-	}
+//	@Bean
+//	public HibernateTransactionManager getTransactionManager() {
+//		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+//		transactionManager.setSessionFactory(sessionFactory().getObject());
+//		return transactionManager;
+//	}
 
 	@Bean("entityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactory(DataSource dataSource) {

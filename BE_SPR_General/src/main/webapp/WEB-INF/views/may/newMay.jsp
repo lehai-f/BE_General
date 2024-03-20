@@ -41,17 +41,15 @@
 						<div class="col-4">
 							<div class="mb-3">
 								<label for="" class="form-label">Mã Máy</label>
-								<form:input type="text" class="form-control" placeholder=""
-									aria-describedby="helpId" path="maMay" />
-								<form:errors id="helpId" class="text-danger" path="maMay"></form:errors>
+								<form:input type="text" class="form-control"  path="maMay" />
+								<form:errors class="text-danger" path="maMay"></form:errors>
 							</div>
 						</div>
 						<div class="col-4">
 							<div class="mb-3">
 								<label for="" class="form-label">Vị Trí</label>
-								<form:input type="text" class="form-control"
-									aria-describedby="helpId" path="viTri" />
-								<form:errors id="helpId" class="text-danger" path="viTri"></form:errors>
+								<form:input type="text" class="form-control" path="viTri" />
+								<form:errors class="text-danger" path="viTri"></form:errors>
 							</div>
 						</div>
 						<div class="col-4">
@@ -62,7 +60,7 @@
 									<form:option value="ranh">Rảnh</form:option>
 									<form:option value="ban">Bận</form:option>
 								</form:select>
-								<form:errors id="helpId" class="text-danger" path="trangThai"></form:errors>
+								<form:errors class="text-danger" path="trangThai"></form:errors>
 							</div>
 						</div>
 

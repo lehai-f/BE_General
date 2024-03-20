@@ -33,7 +33,7 @@ public class KhachHangController {
     }
     
     @PostMapping("/save")
-    public String saveNewKhachHang(Model model, @ModelAttribute("khForm") @Valid KhachHang kh, BindingResult rs) {
+    public String saveNewKhachHang( @ModelAttribute("khForm") @Valid KhachHang kh, BindingResult rs,Model model) {
        if(rs.hasErrors()) {
            return "/khachhang/newkh";
        }

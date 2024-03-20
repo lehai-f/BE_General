@@ -29,7 +29,7 @@ public class May {
     
     @NotBlank
     private String viTri;
-    
+     
     @NotBlank
     private String trangThai;
     
