@@ -84,4 +84,10 @@ public class DichVuController {
         return "/dichvu/listdv";
     }
 
+	@GetMapping("/delete")
+	public String deleteComputer(@RequestParam("id") String maMay, Model model) {
+		dvServices.delDVByID(maMay);
+		return "redirect:/may/listMay";
+	}
+    
 }

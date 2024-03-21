@@ -38,6 +38,10 @@ public class KhachHangServices {
     public List<KhachHang> getAllKH() {
         return khRepo.findAll();
     }
+
+	public void deleteKhachHang(String id) {
+		khRepo.deleteById(id);
+	}
     
     
     

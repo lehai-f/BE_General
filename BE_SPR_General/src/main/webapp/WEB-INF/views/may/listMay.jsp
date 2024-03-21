@@ -79,7 +79,7 @@
 							<ul class="pagination">
 								<c:if test="${crPage > 0}">
 									<li class="page-item"><a class="page-link bg-dark"
-										href="list?page=${crPage-1}" aria-label="Next"> <span
+										href="listMay?page=${crPage-1}" aria-label="Next"> <span
 											aria-hidden="true" class="text-light">&laquo;</span>
 									</a></li>
 								</c:if>
@@ -92,13 +92,13 @@
 										<c:otherwise>
 											<li class="page-item"><a
 												class="page-link bg-dark text-light"
-												href="list?page=${i}">${i+1}</a></li>
+												href="listMay?page=${i}">${i+1}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${crPage lt ttPage-1}">
 									<li class="page-item"><a class="page-link bg-dark"
-										href="list?page=${crPage+1}" aria-label="Next"> <span
+										href="listMay?page=${crPage+1}" aria-label="Next"> <span
 											aria-hidden="true" class="text-light">&raquo;</span>
 									</a></li>
 								</c:if>

@@ -73,4 +73,10 @@ public class MayController {
         mayServices.saveMay(may);
         return "redirect:/may/listMay";
     }
+    
+	@GetMapping("/delete")
+	public String deleteDichVu(@RequestParam("id") String maDV, Model model) {
+		mayServices.delMayByID(maDV);
+		return "redirect:/may/listMay";
+	}
 }

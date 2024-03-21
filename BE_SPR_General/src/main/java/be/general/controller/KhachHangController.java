@@ -83,4 +83,10 @@ public class KhachHangController {
         return "/khachhang/listkh";
     }
     
+    @GetMapping("/delete")
+	public String delete(@RequestParam("id") String id) {
+		khServices.deleteKhachHang(id);
+		return "redirect:/khachhang/listKH";
+	}
+	
 }

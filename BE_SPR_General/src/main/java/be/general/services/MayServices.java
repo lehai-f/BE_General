@@ -41,4 +41,9 @@ public class MayServices {
     public List<String> getAllMaMay(){
         return mayRepo.findAllMaMay();
     }
+
+	public void delMayByID(String maMay) {
+		// TODO Auto-generated method stub
+		mayRepo.deleteById(maMay);
+	}
 }

@@ -38,4 +38,9 @@ public Page<DichVu> seachList(String text, Pageable pageAble) {
 public List<String> allMaDV(){
 	return dvRepo.findAllMaDV();
 }
+
+public void delDVByID(String maDV) {
+	dvRepo.deleteById(maDV);
+	
+}
 }

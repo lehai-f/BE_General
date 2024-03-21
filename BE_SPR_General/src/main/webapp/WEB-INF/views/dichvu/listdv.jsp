@@ -66,7 +66,8 @@
 									<td class="ten${dv.maDV} col">${dv.tenDV}</td>
 									<td class="dvt${dv.maDV} col">${dv.donViTinh}</td>
 									<td class="dg${dv.maDV} col">${dv.donGia}</td>
-									<td class="col-1"><a href="${pageContext.request.contextPath}/dichvu/update/${dv.maDV}"><i
+									<td class="col-1"><a
+										href="${pageContext.request.contextPath}/dichvu/update/${dv.maDV}"><i
 											class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
 										<a href="javascript:void(0);"
 										onclick="showConfirmation('${dv.maDV}')"
@@ -81,7 +82,7 @@
 							<ul class="pagination">
 								<c:if test="${crPage > 0}">
 									<li class="page-item"><a class="page-link bg-dark"
-										href="list?page=${crPage-1}" aria-label="Next"> <span
+										href="listDV?page=${crPage-1}" aria-label="Next"> <span
 											aria-hidden="true" class="text-light">&laquo;</span>
 									</a></li>
 								</c:if>
@@ -93,13 +94,13 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a
-												class="page-link bg-dark text-light" href="list?page=${i}">${i+1}</a></li>
+												class="page-link bg-dark text-light" href="listDV?page=${i}">${i+1}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${crPage lt ttPage-1}">
 									<li class="page-item"><a class="page-link bg-dark"
-										href="list?page=${crPage+1}" aria-label="Next"> <span
+										href="listDV?page=${crPage+1}" aria-label="Next"> <span
 											aria-hidden="true" class="text-light">&raquo;</span>
 									</a></li>
 								</c:if>
